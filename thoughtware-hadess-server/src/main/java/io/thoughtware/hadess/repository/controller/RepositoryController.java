@@ -174,12 +174,19 @@ public class RepositoryController {
     }
 
 
-
-
-    @RequestMapping(path = "/tes1",method = RequestMethod.POST)
+    @RequestMapping(path = "/findUnRelevanceRepository",method = RequestMethod.POST)
     @ApiMethod(name = "findUnRelevanceRepository",desc = "查询未关联组合库的本地和远程库list")
     @ApiParam(name = "repositoryType",desc = "repositoryType",required = true)
-    public Result<List<Repository>> tes1( @NotNull String repositoryType,@NotNull String repositoryGroupId){
+    public Result<List<Repository>> findUnRelevanceRepository( @NotNull String repositoryType,@NotNull String repositoryGroupId){
+        List<Repository> repositoryList = repositoryService.findUnRelevanceRepository(repositoryType,repositoryGroupId);
+
+        return Result.ok(repositoryList);
+    }
+
+    @RequestMapping(path = "/test1",method = RequestMethod.POST)
+    @ApiMethod(name = "findUnRelevanceRepository",desc = "查询未关联组合库的本地和远程库list")
+    @ApiParam(name = "repositoryType",desc = "repositoryType",required = true)
+    public Result<List<Repository>> test1( @NotNull String repositoryType,@NotNull String repositoryGroupId){
         List<Repository> repositoryList = repositoryService.findUnRelevanceRepository(repositoryType,repositoryGroupId);
 
         return Result.ok(repositoryList);
